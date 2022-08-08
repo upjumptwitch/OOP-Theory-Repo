@@ -5,7 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private Rigidbody rb;
-    private GameManager gameManager;
+    protected GameManager gameManager;
     public ParticleSystem explosionParticle;
     private float minSpeed = 12;
     private float maxSpeed = 16;
@@ -37,7 +37,7 @@ public class Target : MonoBehaviour
         Initialize();
     }
     //ABSTRACTION
-    private void Initialize()
+    protected void Initialize()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
@@ -53,6 +53,10 @@ public class Target : MonoBehaviour
         }
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
     //ABSTRACTION, POLYMPORHISM
     private void Clicked()
     {
@@ -60,14 +64,7 @@ public class Target : MonoBehaviour
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         gameManager.UpdateScore(pointValue);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-        if (!gameObject.CompareTag("Bad"))
-        {
-            gameManager.GameOver();
-        }
-    }
+    
     private Vector3 RandomForce()
     {
         return Vector3.up * Random.Range(minSpeed, maxSpeed);

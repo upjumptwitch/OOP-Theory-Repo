@@ -616,7 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e83dea6c15fa4fa5ae8aad76dee55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameActive: 0
   targets:
   - {fileID: 2422697975655852238, guid: ff7bafc0f48a10a41a1d3a602dae62f8, type: 3}
   - {fileID: 5079098354457001251, guid: c739d1482d020b34c89924920246aab2, type: 3}

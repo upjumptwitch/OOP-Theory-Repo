@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2609594374916915248}
   - component: {fileID: 2588099370531389682}
   - component: {fileID: 1193257678225422027}
+  - component: {fileID: 5901243554252395899}
   m_Layer: 0
   m_Name: Good 2
   m_TagString: Untagged
@@ -126,4 +127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
-  pointValue: 10
+--- !u!122 &5901243554252395899
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391416092449003202}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4292958463
+  m_Size: 0

@@ -21,4 +21,10 @@ public class Badie : Target
             }
         }
     }
+    private void Start()
+    {
+        pointValue = -10;
+        Initialize();
+    }
+    
 }
