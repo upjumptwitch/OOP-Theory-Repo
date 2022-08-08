@@ -12,9 +12,32 @@ public class Target : MonoBehaviour
     private float maxTorque = 10;
     private float xRange = 4;
     private float ySpawnPos = -2;
-    public int pointValue;
+
+    //ENCAPSULATION, POLYMPORHISM
+    protected int m_pointValue;
+
+    
+    virtual public int pointValue
+    {
+        get
+        {
+            return m_pointValue;
+        }
+        set
+        {
+            if(value >= 0)
+            {
+                m_pointValue = value;
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
+    {
+        Initialize();
+    }
+    //ABSTRACTION
+    private void Initialize()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
@@ -22,23 +45,21 @@ public class Target : MonoBehaviour
         rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomPosition();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnMouseDown()
     {
         if(gameManager.isGameActive)
         {
-            Destroy(gameObject);
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-            gameManager.UpdateScore(pointValue);
+            Clicked();
         }
         
     }
-
+    //ABSTRACTION, POLYMPORHISM
+    private void Clicked()
+    {
+        Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        gameManager.UpdateScore(pointValue);
+    }
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
